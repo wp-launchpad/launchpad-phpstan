@@ -2,3 +2,5 @@ rules:
     - Launchpad\PHPStan\PerformanceRule
     - Launchpad\PHPStan\Hook\BaseHookAPIRule
     - Launchpad\PHPStan\Hook\SyntaxRule
+    - Launchpad\PHPStan\Transients\BaseAPIRule
+    - Launchpad\PHPStan\Options\BaseAPIRule
