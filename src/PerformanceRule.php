@@ -33,16 +33,18 @@ class PerformanceRule implements \PHPStan\Rules\Rule
 			return [];
 		}
 
-		var_dump($scope->getNamespace());
-		var_dump($scope->getClassReflection()->getParentClass());
-		if( ! $scope->getClassReflection()->isSubclassOf('\Launchpad\Dependencies\LaunchpadCore\Container\AbstractServiceProvider') ) {
+		$namespace_parts = explode('\\', $scope->getNamespace());
+
+		$base_namespace = array_shift($namespace_parts);
+
+		if( ! $scope->getClassReflection()->isSubclassOf("\\{$base_namespace}\Dependencies\LaunchpadCore\Container\AbstractServiceProvider") ) {
 			return [];
 		}
 
 		$type = $scope->getType($node->var);
 
 
-		if( (new ObjectType('\Launchpad\Dependencies\League\Container\DefinitionContainerInterface'))->isSuperTypeOf($type)->no() ) {
+		if( (new ObjectType("\\{$base_namespace}\Dependencies\League\Container\DefinitionContainerInterface"))->isSuperTypeOf($type)->no() ) {
 			return [];
 		}
 
