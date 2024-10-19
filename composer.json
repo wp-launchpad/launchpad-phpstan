@@ -14,8 +14,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Launchpad\\PHPStan\\Tests\\": "tests/",
-      ""
+      "Launchpad\\PHPStan\\Tests\\": "tests/"
     }
   }
 }
