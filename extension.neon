@@ -1,2 +1,4 @@
 rules:
     - Launchpad\PHPStan\PerformanceRule
+    - Launchpad\PHPStan\Hook\BaseHookAPIRule
+    - Launchpad\PHPStan\Hook\SyntaxRule
