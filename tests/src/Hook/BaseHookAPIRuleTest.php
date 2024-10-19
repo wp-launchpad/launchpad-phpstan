@@ -24,4 +24,17 @@ class BaseHookAPIRuleTest extends RuleTestCase {
 			],
 		]);
 	}
+
+	public function testFiringShouldSignal() {
+		$this->analyse([__DIR__ . '/../data/hook/base-hook-api-rule/firing.php'], [
+			[
+				'Firing a hook should be done thought the dispatcher.', // asserted error message
+				3, // asserted error line
+			],
+			[
+				'Firing a hook should be done thought the dispatcher.', // asserted error message
+				5, // asserted error line
+			],
+		]);
+	}
 }

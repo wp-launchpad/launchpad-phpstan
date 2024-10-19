@@ -22,19 +22,32 @@ class BaseHookAPIRule implements Rule {
 	public function processNode( Node $node, Scope $scope ): array {
 		$name = (string) $node->name;
 
-		if( ! in_array($name, [
+		if( in_array($name, [
 			'add_filter',
 			'add_action',
 		], true)) {
-			return [];
+			return [
+				RuleErrorBuilder::message(
+					'Adding a callback for a filter or an action should be done using the dispatcher or the @hook annotation.'
+				)
+								->identifier('launchpad.hooks.baseHookApi.callback')
+								->build(),
+			];
 		}
 
-		return [
-			RuleErrorBuilder::message(
-				'Adding a callback for a filter or an action should be done using the dispatcher or the @hook annotation.'
-			)
-							->identifier('launchpad.hooks.baseHookApi')
-							->build(),
-		];
+		if(in_array($name, [
+			'do_action',
+			'apply_filters'
+		], true)) {
+			return [
+				RuleErrorBuilder::message(
+					'Firing a hook should be done thought the dispatcher.'
+				)
+								->identifier('launchpad.hooks.baseHookApi.fire')
+								->build(),
+			];
+		}
+
+		return [];
 	}
 }
