@@ -4,3 +4,9 @@ rules:
     - Launchpad\PHPStan\Hook\SyntaxRule
     - Launchpad\PHPStan\Transients\BaseAPIRule
     - Launchpad\PHPStan\Options\BaseAPIRule
+    - Launchpad\PHPStan\Container\InflectorRule
+services:
+	-
+		class: Launchpad\PHPStan\Container\InflectorRule
+		arguments:
+			- @reflectionProvider
