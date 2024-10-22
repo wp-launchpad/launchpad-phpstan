@@ -2,11 +2,16 @@ rules:
     - Launchpad\PHPStan\PerformanceRule
     - Launchpad\PHPStan\Hook\BaseHookAPIRule
     - Launchpad\PHPStan\Hook\SyntaxRule
+    - Launchpad\PHPStan\Hook\HeavyInitRule
     - Launchpad\PHPStan\Transients\BaseAPIRule
     - Launchpad\PHPStan\Options\BaseAPIRule
     - Launchpad\PHPStan\Container\InflectorRule
 services:
 	-
 		class: Launchpad\PHPStan\Container\InflectorRule
+		arguments:
+			- @reflectionProvider
+	-
+		class: Launchpad\PHPStan\Hook\HeavyInitRule
 		arguments:
 			- @reflectionProvider
