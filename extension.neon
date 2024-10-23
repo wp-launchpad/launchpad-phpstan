@@ -6,6 +6,7 @@ rules:
     - Launchpad\PHPStan\Transients\BaseAPIRule
     - Launchpad\PHPStan\Options\BaseAPIRule
     - Launchpad\PHPStan\Container\InflectorRule
+    - Launchpad\PHPStan\Exception\NoExceptionRule
 services:
 	-
 		class: Launchpad\PHPStan\Container\InflectorRule
@@ -13,5 +14,9 @@ services:
 			- @reflectionProvider
 	-
 		class: Launchpad\PHPStan\Hook\HeavyInitRule
+		arguments:
+			- @reflectionProvider
+	-
+		class: Launchpad\PHPStan\Exception\NoExceptionRule
 		arguments:
 			- @reflectionProvider
