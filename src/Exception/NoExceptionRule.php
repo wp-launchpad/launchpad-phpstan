@@ -9,7 +9,7 @@ use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\ObjectType;
-
+use PhpParser\Node\Name\FullyQualified;
 class NoExceptionRule implements Rule {
 
 	private $reflectionProvider;
@@ -32,6 +32,10 @@ class NoExceptionRule implements Rule {
 	public function processNode( Node $node, Scope $scope ): array {
 
 		if( ! $node instanceof \PhpParser\Node\Expr\New_) {
+			return [];
+		}
+
+		if( ! $node->class instanceof \PhpParser\Node\Name\FullyQualified) {
 			return [];
 		}
 
