@@ -7,6 +7,7 @@ rules:
     - Launchpad\PHPStan\Options\BaseAPIRule
     - Launchpad\PHPStan\Container\InflectorRule
     - Launchpad\PHPStan\Exception\NoExceptionRule
+    - Launchpad\PHPStan\Architecture\SingletonRule
 services:
 	-
 		class: Launchpad\PHPStan\Container\InflectorRule
@@ -18,5 +19,9 @@ services:
 			- @reflectionProvider
 	-
 		class: Launchpad\PHPStan\Exception\NoExceptionRule
+		arguments:
+			- @reflectionProvider
+	-
+		class: Launchpad\PHPStan\Architecture\SingletonRule
 		arguments:
 			- @reflectionProvider
