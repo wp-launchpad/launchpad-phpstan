@@ -8,6 +8,7 @@ rules:
     - Launchpad\PHPStan\Container\InflectorRule
     - Launchpad\PHPStan\Exception\NoExceptionRule
     - Launchpad\PHPStan\Architecture\SingletonRule
+    - Launchpad\PHPStan\Architecture\StaticRule
 services:
 	-
 		class: Launchpad\PHPStan\Container\InflectorRule
