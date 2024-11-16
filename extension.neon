@@ -5,6 +5,8 @@ rules:
     - Launchpad\PHPStan\Hook\HeavyInitRule
     - Launchpad\PHPStan\Transients\BaseAPIRule
     - Launchpad\PHPStan\Options\BaseAPIRule
+    - Launchpad\PHPStan\Queue\BaseAPIRule
+    - Launchpad\PHPStan\Assets\BaseAPIRule
     - Launchpad\PHPStan\Container\InflectorRule
     - Launchpad\PHPStan\Exception\NoExceptionRule
     - Launchpad\PHPStan\Architecture\SingletonRule
